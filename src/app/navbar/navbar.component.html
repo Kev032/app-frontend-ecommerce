@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container-fluid container-text">
+    <a class="navbar-brand" routerLink="/product-list">
+      <fa-icon [icon]="faShop"></fa-icon>
+      Tienda Online La Oficial</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul
+        *ngIf="!userService.isLoggedIn()"
+        class="navbar-nav me-auto mb-2 mb-lg-0"
+      ></ul>
+      <ul
+        class="navbar-nav me-auto mb-2 mb-lg-0"
+        *ngIf="userService.isLoggedIn()"
+      >
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/product-list"
+            >Incio</a
+          >
+        </li>
+
+        <li *ngIf="!userService.isAdminLogIn()" class="nav-item">
+          <a (click)="gotoUpdateDataUser()" class="nav-link active"
+            >Mis Datos</a
+          >
+        </li>
+
+        <li *ngIf="!userService.isAdminLogIn()" class="nav-item">
+          <a (click)="gotoOrderDetail()" class="nav-link active">Mis Pedidos</a>
+        </li>
+
+        <li *ngIf="userService.isAdminLogIn()" class="nav-item">
+          <a (click)="gotoProducts()" class="nav-link active">Productos</a>
+        </li>
+
+        <li *ngIf="userService.isAdminLogIn()" class="nav-item">
+          <a (click)="gotoOrderDetail()" class="nav-link active">Pedidos</a>
+        </li>
+      </ul>
+
+      <form class="d-flex">
+        <p class="mx-3 my-1">
+          {{
+            this.userService.namaUserLogIn.length == 0
+              ? ""
+              : "Hola, " + this.userService.namaUserLogIn
+          }}
+        </p>
+        <button class="btn btn-outline-success" (click)="gotoCart()">
+          <fa-icon [icon]="faShopify"></fa-icon>
+        </button>
+        <button
+          *ngIf="!userService.isLoggedIn()"
+          (click)="openLoginModal()"
+          type="button"
+          class="btn btn-outline-success mx-2"
+        >
+          Login
+        </button>
+        <button
+          *ngIf="userService.isLoggedIn()"
+          (click)="logout()"
+          type="button"
+          class="btn btn-outline-dark mx-2"
+        >
+          Salir
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>

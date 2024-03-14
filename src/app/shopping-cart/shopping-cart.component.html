@@ -1,0 +1,171 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header title-cart">
+      Tu bolsa de Compras ({{ this.quantity }})
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div
+              class="accordion-item"
+              *ngFor="let product of this.listProducts"
+            >
+              <h2
+                class="accordion-header"
+                [id]="'product-heading' + product.id"
+              >
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#product-' + product.id"
+                  aria-expanded="false"
+                  [attr.aria-controls]="'product-' + product.id"
+                >
+                  <h4 class="card-title-lg">{{ product.name }}</h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div
+                        class="position-absolute top-50 start-50 translate-middle"
+                      >
+                        <button
+                          (click)="subtractQuantityProduct(product.id)"
+                          class="btn btn-secondary"
+                          type="button"
+                        >
+                          -
+                        </button>
+                        <button type="button" class="btn btn-light">
+                          {{ product.num }}
+                        </button>
+                        <button
+                          (click)="addQuantityProduct(product)"
+                          class="btn btn-secondary"
+                          type="button"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div
+                        class="position-absolute top-50 end-0 translate-middle-y me-5"
+                      >
+                        <strong>{{ "S/." + product.price }}</strong>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              </h2>
+              <div
+                [id]="'product-' + product.id"
+                class="accordion-collapse collapse"
+                [attr.aria-labelledby]="'product-heading' + product.id"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <img
+                        [src]="'data:image/png;base64,' + product.image"
+                        class="card-img-top img-fluid img-size-cart"
+                        alt="product.name"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <h4 class="">{{ product.description }}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="this.listProducts.length <= 0">
+              <div class="row justify-content-center my-3">
+                <!-- Column -->
+                <div class="col-md-10 align-self-center text-center">
+                  <h6
+                    class="text-white font-weight-normal op-3"
+                    style="color: black !important"
+                  >
+                    **Aun no tienes Productos en tu bolsa**.
+                  </h6>
+                </div>
+              </div>
+              <div class="row justify-content-center my-3">
+                <!-- Column -->
+                <div class="col-md-10 align-self-center text-center">
+                  <img
+                    class="img-size"
+                    src="../../assets/image/shopify.svg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h6 class="card-title">Envío a domicilio no inclído.</h6>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-title-lg">Productos({{ this.quantity }})</h4>
+            </div>
+            <div class="col-md-6">
+              <h4 class="card-title-lg">S/ {{ getTotalPrice() }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-title-lg">Descuentos</h4>
+            </div>
+            <div class="col-md-6">
+              <h4 class="card-title-lg">S/ 0</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-title-lg">Total</h4>
+            </div>
+            <div class="col-md-6">
+              <h4 class="card-title-lg">S/ {{ getTotalPrice() }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <h6 class="card-title">Aceptamos todas las tarjetas:</h6>
+            <div class="col-md-12">
+              <fa-icon class="mx-1" [icon]="faCcVisa"></fa-icon>
+              <fa-icon class="mx-1" [icon]="faCcDinersClub"></fa-icon>
+              <fa-icon class="mx-1" [icon]="faCcApplePay"></fa-icon>
+              <fa-icon class="mx-1" [icon]="faCcPaypal"></fa-icon>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <div class="d-grid gap-2 col-8 mx-auto">
+                <button
+                  (click)="generedOrder()"
+                  class="btn btn-success"
+                  type="button"
+                >
+                  Comprar
+                  <fa-icon class="mx-1" [icon]="faRightFromBracket"></fa-icon>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer" style="height: 28px">
+      <div class="position-absolute bottom-0 end-0 me-5 my-1">
+        <span class="badge bg-secondary"
+          >**Con garantía extendidad por 12 Meses**</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center my-3">{{ this.productSelected.name }}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row justify-content-center my-3">
+        <div class="col-md-10 align-self-center text-center">
+          <img
+            [src]="'data:image/png;base64,' + this.productSelected.image"
+            class="card-img-top img-fluid img-size-admin"
+            alt="product.name"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

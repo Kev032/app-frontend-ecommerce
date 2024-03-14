@@ -1,0 +1,137 @@
+<div class="container my-3">
+  <div class="row justify-content-center my-3">
+    <div class="col-md-10 align-self-center text-center">
+      <h2
+        class="text-white font-weight-normal op-3 title-cart"
+        style="color: black !important"
+      >
+        Datos de la Cuenta
+      </h2>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header title-cart"></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <form class="row g-3 needs-validation" novalidate>
+            <div class="col-12">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="invalidCheck"
+                  required
+                  name="chkChangeData"
+                  (click)="validisChangeData()"
+                  [(ngModel)]="chkChangeData"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <label class="form-check-label" for="invalidCheck">
+                  Quieres editar tus datos?
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom01" class="form-label">Nombres</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                required
+                name="name"
+                [disabled]="inputEnabled"
+                [(ngModel)]="frmDatos.name"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="validationCustom01" class="form-label"
+                >Apellidos</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                required
+                name="lastname"
+                [disabled]="inputEnabled"
+                [(ngModel)]="frmDatos.lastname"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="validationCustomUsername" class="form-label"
+                >E-mail</label
+              >
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustomUsername"
+                  aria-describedby="inputGroupPrepend"
+                  required
+                  name="email"
+                  [disabled]="inputEnabled"
+                  [(ngModel)]="frmDatos.email"
+                />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustomUsername" class="form-label"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="validationCustomUsername"
+                aria-describedby="inputGroupPrepend"
+                required
+                name="password"
+                [disabled]="inputEnabled"
+                [(ngModel)]="frmDatos.password"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom03" class="form-label"
+                >Dirección</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom03"
+                required
+                name="address"
+                [disabled]="inputEnabled"
+                [(ngModel)]="frmDatos.address"
+              />
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom05" class="form-label"
+                >Teléfono</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom05"
+                required
+                name="phone"
+                [disabled]="inputEnabled"
+                [(ngModel)]="frmDatos.phone"
+              />
+              <div class="invalid-feedback">Please provide a valid zip.</div>
+            </div>
+
+            <div class="col-12 my-3" *ngIf="chkChangeData">
+              <button class="btn btn-success" (click)="updateUser()">
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="container my-1">
+  <!-- Row  -->
+  <div class="row justify-content-center">
+    <!-- Column -->
+    <div class="col-md-10 align-self-center text-center">
+      <h1 class="title text-white text-uppercase">
+        Los mejores Productos al mejor precio
+      </h1>
+    </div>
+  </div>
+  <div class="row row-cols-5 row-cols-md-3 g-2">
+    <div class="col-md-3" *ngFor="let product of products">
+      <div class="col">
+        <div class="card card-size">
+          <img
+            [src]="'data:image/png;base64,' + product.image"
+            class="card-img-top img-fluid img-size"
+            alt="product.name"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              <strong>{{ product.name }}</strong>
+            </h5>
+            <h6 class="card-text">
+              {{ product.description }} -
+              <strong> S/.{{ product.price }}</strong>
+            </h6>
+          </div>
+          <div class="card-footer">
+            <div class="text-center">
+              <button
+                (click)="addCart(product)"
+                type="button"
+                class="btn btn-success"
+              >
+                Añadir
+                <fa-icon [icon]="faShopify"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center my-5">
+  <!-- Column -->
+  <div class="col-md-10 align-self-center text-center">
+    <h6
+      class="text-white font-weight-normal op-3"
+      style="color: black !important"
+    >
+      **Todas tus compras traen descuentos exclusivos.
+    </h6>
+  </div>
+</div>

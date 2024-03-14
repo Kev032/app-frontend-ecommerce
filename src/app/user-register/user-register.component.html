@@ -1,0 +1,114 @@
+<div class="container my-3">
+  <div class="row justify-content-center my-3">
+    <div class="col-md-10 align-self-center text-center">
+      <h2
+        class="text-white font-weight-normal op-3 title-cart my-3"
+        style="color: black !important"
+      >
+        Registro de Cuenta
+      </h2>
+    </div>
+  </div>
+  <form class="row g-3 needs-validation" novalidate>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="validationCustom01" class="form-label">Nombres</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom01"
+          required
+          name="name"
+          [(ngModel)]="frmDatos.name"
+        />
+      </div>
+
+      <div class="col-md-3">
+        <label for="validationCustom01" class="form-label">Apellidos</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom01"
+          required
+          name="lastname"
+          [(ngModel)]="frmDatos.lastname"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="validationCustomUsername" class="form-label">E-mail</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            required
+            name="email"
+            [(ngModel)]="frmDatos.email"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="validationCustomUsername" class="form-label"
+          >Password</label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="validationCustomUsername"
+          aria-describedby="inputGroupPrepend"
+          required
+          name="password"
+          [(ngModel)]="frmDatos.password"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="validationCustom03" class="form-label">Dirección</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom03"
+          required
+          name="address"
+          [(ngModel)]="frmDatos.address"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Teléfono</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom05"
+          required
+          name="phone"
+          [(ngModel)]="frmDatos.phone"
+        />
+        <div class="invalid-feedback">Please provide a valid zip.</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="row justify-content-center my-3 ms-3">
+          <div class="col-md-10 align-self-center text-center">
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button
+                (click)="saveUser()"
+                class="btn btn-success"
+                type="button"
+              >
+                Grabar
+                <fa-icon class="mx-1" [icon]="faRightFromBracket"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </form>
+</div>

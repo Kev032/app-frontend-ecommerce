@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row justify-content-center my-3">
+    <div class="col-md-10 align-self-center text-center">
+      <h2
+        class="text-white font-weight-normal op-3 title-cart"
+        style="color: black !important"
+      >
+        {{ isCliente ? "Tu Lista de Pedidos" : "Detalle de Ordenes" }}
+      </h2>
+    </div>
+  </div>
+  <div *ngIf="isCliente" class="table-responsive">
+    <table class="table align-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nro de Orden</th>
+          <th scope="col">Fecha Creación</th>
+          <th scope="col">total</th>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of this.orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.number }}</td>
+          <td>{{ order.creation_date }}</td>
+          <td>{{ order.total }}</td>
+          <td>
+            <button
+              (click)="gotoOrderDetail(order.number, order.orderDetails)"
+              class="btn btn-outline-secondary"
+            >
+              <fa-icon class="mx-1" [icon]="faCircleInfo"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!isCliente" class="table-responsive">
+    <table class="table align-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nro de Orden</th>
+          <th scope="col">Fecha Creación</th>
+          <th scope="col">total</th>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of this.orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.number }}</td>
+          <td>{{ order.creation_date }}</td>
+          <td>{{ order.total }}</td>
+          <td>
+            <button
+              (click)="gotoOrderDetail(order.number, order.orderDetails)"
+              class="btn btn-outline-secondary"
+            >
+              <fa-icon class="mx-1" [icon]="faCircleInfo"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center my-3">
+    <div class="col-md-10 align-self-center text-center">
+      <h2
+        class="text-white font-weight-normal op-3 title-cart"
+        style="color: black !important"
+      >
+        Detalle de la Orden Nro
+        {{ this.orderSelected }}
+      </h2>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table align-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of this.orderDetail">
+          <td>{{ detail.idDetail }}</td>
+          <td>{{ detail.description }}</td>
+          <td>{{ detail.quantity }}</td>
+          <td>{{ detail.price }}</td>
+          <td>{{ detail.total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div #elementoParaDesplazarse></div>
+</div>

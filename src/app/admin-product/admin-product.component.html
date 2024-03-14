@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row justify-content-center my-3">
+    <div class="col-md-10 align-self-center text-center">
+      <h2
+        class="text-white font-weight-normal op-3 title-cart"
+        style="color: black !important"
+      >
+        Administración de Productos
+      </h2>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header title-cart"></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table align-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Imagen</th>
+                  <th scope="col">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of this.products">
+                  <td>{{ product.id }}</td>
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.description }}</td>
+                  <td>{{ product.price }}</td>
+                  <td>{{ product.quantity }}</td>
+                  <td>
+                    <button
+                      (click)="openViewImageModal(product)"
+                      class="btn btn-outline-primary"
+                    >
+                      <fa-icon class="mx-1" [icon]="faImage"></fa-icon>
+                    </button>
+                  </td>
+                  <td>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button
+                          (click)="openEditModal(product)"
+                          class="btn btn-primary mx-1"
+                          type="button"
+                        >
+                          <fa-icon [icon]="faEdit"></fa-icon>
+                        </button>
+                        <button
+                          (click)="deleteProduct(product)"
+                          class="btn btn-danger"
+                          type="button"
+                        >
+                          <fa-icon [icon]="faRemove"></fa-icon>
+                        </button>
+                      </div>
+                      <div class="col-md-2"></div>
+                      <div class="col-md-2"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row justify-content-center my-3">
+            <div class="col-md-10 align-self-center text-center">
+              <button
+                (click)="openAddModal()"
+                type="button"
+                class="btn btn-success"
+              >
+                <fa-icon class="mx-1" [icon]="faPlus"></fa-icon>
+                Nuevo Producto
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer" style="height: 28px">
+      <div class="position-absolute bottom-0 end-0 me-5 my-1">
+        <span class="badge bg-secondary"></span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <div class="row justify-content-center my-3">
+      <div class="col-md-10 align-self-center text-center">
+        <h2
+          class="text-white font-weight-normal op-3 title-cart"
+          style="color: black !important"
+        >
+          Nuevo Producto
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <form
+            [formGroup]="formulario"
+            class="row g-3 needs-validation"
+            novalidate
+          >
+            <div class="col-md-12">
+              <label for="validationCustom01" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                required
+                name="name"
+                formControlName="name"
+              />
+            </div>
+            <div class="col-md-12">
+              <label for="validationCustom01" class="form-label">Imagen</label>
+              <input
+                type="file"
+                class="form-control"
+                id="validationCustom01"
+                required
+                formControlName="image"
+                name="image"
+                (change)="cargarImagen($event)"
+              />
+            </div>
+            <div class="col-md-12">
+              <label for="validationCustom01" class="form-label"
+                >Descripción</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                required
+                name="description"
+                formControlName="description"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom01" class="form-label">Precio</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                required
+                name="price"
+                formControlName="price"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom01" class="form-label">Stock</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                required
+                name="quantity"
+                formControlName="quantity"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row justify-content-center my-3">
+        <div class="col-md-10 align-self-center text-center">
+          <button (click)="saveProduct()" type="button" class="btn btn-success">
+            <fa-icon class="mx-1" [icon]="faSave"></fa-icon>
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
